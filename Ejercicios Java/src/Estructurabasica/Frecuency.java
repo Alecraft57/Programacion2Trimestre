@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class freq {
+public class Frecuency {
     public static void main(String[] args) {
         ArrayList<String>numeros=new ArrayList<>();
         numeros.add("uno");

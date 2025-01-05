@@ -1,7 +1,7 @@
 package Flujos;
 import java.util.ArrayList;
 import java.util.List;
-public class Sumaposneg {
+public class SumPosNeg {
     public static void main(String[] args) {
         List<String> numeros = new ArrayList<>();
         int contaodorpos=0;
