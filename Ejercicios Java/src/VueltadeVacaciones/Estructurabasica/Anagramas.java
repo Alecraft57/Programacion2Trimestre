@@ -1,6 +1,4 @@
-package VueltadeVacaciones;
-
-import com.sun.security.jgss.GSSUtil;
+package VueltadeVacaciones.Estructurabasica;
 
 import java.io.*;
 import java.util.*;

@@ -1,4 +1,4 @@
-package VueltadeVacaciones;
+package VueltadeVacaciones.Estructurabasica;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,6 +1,5 @@
-package VueltadeVacaciones;
+package VueltadeVacaciones.Estructurabasica;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
