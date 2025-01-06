@@ -1,4 +1,4 @@
-package VueltadeVacaciones;
+package VueltadeVacaciones.Estructurabasica;
 
 import java.util.ArrayList;
 import java.util.Collections;

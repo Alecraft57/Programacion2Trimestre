@@ -1,4 +1,4 @@
-package Examendel16deEnero;
+package VueltadeVacaciones.Estructurabasica;
 
 import java.io.*;
 import java.util.*;
@@ -6,12 +6,11 @@ import java.util.*;
 public class Anagramas {
     public static void main(String[] args) throws IOException {
         Map<String, ArrayList<String>> anagramGroups = new HashMap<>();
-        BufferedReader reader = new BufferedReader(new FileReader("/home/alemirram3/Escritorio/spanish-dict.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("C:/Users/aleja/Desktop/spanish-dict.txt"));
         String line;
         while ((line = reader.readLine()) != null) {
             //Trabajar con line
             String alfabetizadas = alphabetize(line+"\n");
-
             anagramGroups.putIfAbsent(alfabetizadas, new ArrayList<>());
             anagramGroups.get(alfabetizadas).add(line);
         }
@@ -24,6 +23,5 @@ public class Anagramas {
         return new String(a);
     }
 }
-
 
 

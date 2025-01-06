@@ -1,4 +1,4 @@
-package Examendel16deEnero;
+package Examendel16deEnero.Estructurabasica;
 import java.util.ArrayList;
 import java.util.Scanner;
 

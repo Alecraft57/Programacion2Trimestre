@@ -1,4 +1,4 @@
-package Examendel16deEnero;
+package Examendel16deEnero.Estructurabasica;
 import java.util.HashMap;
 import java.util.Map;
 public class ejemploHasMap {
