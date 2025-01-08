@@ -1,11 +1,11 @@
 package Examendel16deEnero.InterfazComparable;
 
-public class objetostutankamón {
+public class objetostutankamon {
     private String nombre;
     private int valorhistorico;
     private int peso;
 
-    public objetostutankamón(String nombre,int valorhistorico,int peso){
+    public objetostutankamon(String nombre,int valorhistorico,int peso){
         this.nombre=nombre;
         this.valorhistorico=valorhistorico;
         this.peso=peso;

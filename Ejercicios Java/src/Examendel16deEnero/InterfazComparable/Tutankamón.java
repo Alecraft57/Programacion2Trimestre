@@ -11,20 +11,35 @@ public class Tutankamón {
         String nom="";
         int peso=0;
         int valor=0;
-        List<objetostutankamón>objetos=new ArrayList<>();
+        int encontrados=0;
+        List<objetostutankamon>objetos=new ArrayList<>();
         System.out.println("Cuantos objetos se han encontrado?");
-        int encontrados=sc.nextInt();
+        encontrados=sc.nextInt();
+        while(encontrados>100 || encontrados<0){
+            System.out.println("Dime una cantidad entre 1 y 100");
+            encontrados=sc.nextInt();
+        }
         for(int i=0;i<encontrados;i++){
             System.out.println("Dime el nombre del objeto");
             nom=sc.next();
+            while(nom.length()>10){
+                System.out.println("Dime el nombre del objeto(Tiene que ser de 10 letras maximo)");
+                nom=sc.next();
+            }
             System.out.println("Dime su Valor Historico");
             valor=sc.nextInt();
             System.out.println("Dime su peso");
             peso=sc.nextInt();
-            objetos.add(new objetostutankamón(nom,valor,peso));
+            while(valor>1000 || peso>1000){
+                System.out.println("Dime su Valor Historico(Tiene que ser entre 1 y 1000)");
+                valor=sc.nextInt();
+                System.out.println("Dime su peso(Tiene que ser entre 1 y 1000)");
+                peso=sc.nextInt();
+            }
+            objetos.add(new objetostutankamon(nom,valor,peso));
         }
         objetos.sort((valor1,valor2)->Integer.compare(valor2.getValorhistorico(),valor1.getValorhistorico()));
-        for(objetostutankamón obj: objetos){
+        for(objetostutankamon obj: objetos){
             System.out.println(obj.getNombre()+" "+obj.getValorhistorico()+" "+obj.getPeso());
     }
 }
