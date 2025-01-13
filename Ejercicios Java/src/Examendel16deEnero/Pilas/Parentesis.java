@@ -3,13 +3,14 @@ package Examendel16deEnero.Pilas;
 import javax.print.DocFlavor;
 import java.util.Scanner;
 import java.util.Stack;
-
+import java.util.Collections;
 public class Parentesis {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         System.out.println("Dime una frase y te digo si esta bien parentizada(tanto corchetes como parentesis)");
         String frase= sc.nextLine();
         parentizador(frase);
+
     }
     public static void parentizador(String frase) {
 //        Stack<Integer> paren = new Stack<Integer>();

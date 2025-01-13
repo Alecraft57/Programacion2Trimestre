@@ -10,7 +10,7 @@ public class FelipeImbecil {
         Scanner sc = new Scanner(System.in);
         int prioridad = 0;
         int duracion = 0;
-        List<tareasfelipe> tareas = new ArrayList<>();
+        ArrayList<tareasfelipe> tareas = new ArrayList<>();
         System.out.println("Cantidad de tareas");
         int cantidadtareas = sc.nextInt();
         for (int i = 0; i < cantidadtareas; i++) {
