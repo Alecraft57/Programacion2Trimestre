@@ -12,7 +12,6 @@ public class tareasfelipe {
         public int getPrioridad() {
             return this.prioridad;
         }
-
         public int getDuracion() {
             return this.duracion;
         }
