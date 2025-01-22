@@ -9,10 +9,20 @@ public class uso {
         System.out.println(primero);
         System.out.println("Dime que quieres hacer(ingresar o retirar)");
         String respuesta=sc.nextLine();
+
         if(respuesta.equals("ingresar")){
             System.out.println("Cuanto quieres ingresar?");
-            Double ing=sc.nextDouble();
-            Double ingresado=primero.getCantidad()+ing;
+            double ing=sc.nextDouble();
+            primero.ingresar(ing);
+            System.out.println(primero);
+
+        }else if(respuesta.equals("retirar")){
+            System.out.println("Cuanto quieres retirar?");
+            double ret = sc.nextDouble();
+            primero.setCantidad(ret);
+            primero.retirar();
+            System.out.println(primero);
+
         }
     }
 }

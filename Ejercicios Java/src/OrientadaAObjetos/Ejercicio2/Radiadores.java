@@ -24,13 +24,17 @@ public class Radiadores {
    public int getGrados(){
        return grados;
    }
-   public String subir(){
-       int res= getGrados()+1;
-       return "Has subido 1 grado "+res;
+   public void setGrados(int grados){
+       if (grados <= tempmax && grados >= tempmin)
+           grados = grados;
    }
-   public String bajar(){
-       int res=getGrados()-1;
-       return "Has bajado 1 grado"+res;
+   public void subir() {
+       if (grados + 1 <= tempmax)
+           grados++;
+   }
+   public void bajar(){
+       if(grados -1 >= tempmin)
+           grados--;
    }
     public String toString(){
         return getNombre()+", temperatura maxima = "+getTempmax()+"º, "+" temperatura minima = "+getTempmin()+"º, grados actuales = "+getGrados()+"º";
