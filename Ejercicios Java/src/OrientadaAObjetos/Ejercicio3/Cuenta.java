@@ -8,6 +8,9 @@ public class Cuenta {
         this.titular=titular;
         this.cantidad=cantidad;
     }
+    Cuenta(String titular){
+        this(titular,0.0);
+    }
     public String getTitular(){
         return titular;
     }
@@ -19,16 +22,15 @@ public class Cuenta {
     }
     public void ingresar(double ingresos){
         if(ingresos>0)
-            this.cantidad+=ingresos;
+            cantidad+=ingresos;
     }
-    public void retirar() {
-        double ret=getCantidad();
-        if (ret - cantidad < 0) {
-            ret = 0;
+    public void retirar(double retirar) {
+        if (cantidad - retirar < 0) {
+            cantidad = 0;
         } else
-            ret -= getCantidad();
+            this.cantidad=cantidad-retirar;
     }
     public String toString(){
-        return "Eres "+titular+" y tienes "+cantidad;
+        return "Eres "+titular+" y tienes "+cantidad+"€ ";
     }
 }

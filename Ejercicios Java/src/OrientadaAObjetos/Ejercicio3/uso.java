@@ -19,8 +19,7 @@ public class uso {
         }else if(respuesta.equals("retirar")){
             System.out.println("Cuanto quieres retirar?");
             double ret = sc.nextDouble();
-            primero.setCantidad(ret);
-            primero.retirar();
+            primero.retirar(ret);
             System.out.println(primero);
 
         }
