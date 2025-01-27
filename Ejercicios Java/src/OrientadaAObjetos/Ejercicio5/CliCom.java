@@ -2,9 +2,13 @@ package OrientadaAObjetos.Ejercicio5;
 
 public class CliCom {
     private int priv;
+    private Compte compte;
+    private Client client;
 
-    CliCom(int priv){
+    CliCom(int priv,Compte compte,Client client){
         this.priv=priv;
+        this.compte=compte;
+        this.client=client;
     }
 
     public int getPriv() {
