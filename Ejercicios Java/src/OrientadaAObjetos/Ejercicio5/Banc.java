@@ -11,6 +11,11 @@ public class Banc {
         this.entidad=entidad;
         this.sucursales=new HashSet<>();
     }
+
+    public Set<Sucursal> getSucursales() {
+        return sucursales;
+    }
+
     public int getEntidad() {
         return entidad;
     }
@@ -19,6 +24,6 @@ public class Banc {
     }
     @Override
     public String toString() {
-        return " "+getEntidad();
+        return "Nº entidad: "+getEntidad();
     }
 }

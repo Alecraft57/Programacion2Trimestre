@@ -10,6 +10,7 @@ public class Domiciliacio {
     public int getNumdom() {
         return numdom;
     }
+    @Override
     public String toString(){
         return "NºDomiciliacio: "+getNumdom();
     }

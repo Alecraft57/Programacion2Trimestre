@@ -14,7 +14,7 @@ public class Prestec {
     public int getNumpre() {
         return numpre;
     }
-
+    @Override
     public String toString(){
         return "NºPrestec: "+getNumpre();
     }

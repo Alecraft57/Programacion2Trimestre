@@ -27,7 +27,7 @@ public class Sucursal {
     public void addCompte(Compte compte){
         this.comptes.add(compte);
     }
-
+    @Override
     public String toString(){
         return "NºSucursal: "+getNumsuc();
     }

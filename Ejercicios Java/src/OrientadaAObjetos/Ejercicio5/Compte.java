@@ -25,5 +25,9 @@ public class Compte {
     public void addDomiciliacio(Domiciliacio domiciliacio){
         this.domiciliacions.add(domiciliacio);
     }
+    @Override
+    public String toString(){
+        return "NºCompte: "+getNumcc();
+    }
 
 }

@@ -22,6 +22,7 @@ public class Client {
     public void Comptes(Compte Compte){
         this.comptes.add(Compte);
     }
+    @Override
     public String toString(){
         return "DNI: "+getDNI();
     }
