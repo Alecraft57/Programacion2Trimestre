@@ -22,4 +22,8 @@ public class Catedra {
         this.profesores.add(profesor);
     }
 
+    public String toString() {
+        return "Catedra: "+getCatedra();
+    }
+
 }

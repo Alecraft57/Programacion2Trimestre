@@ -18,6 +18,6 @@ public class Area {
         this.departaments.add(departament);
     }
     public String toString() {
-        return " "+getArea();
+        return "Area: "+getArea();
     }
 }

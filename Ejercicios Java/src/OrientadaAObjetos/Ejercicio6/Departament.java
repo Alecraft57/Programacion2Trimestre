@@ -24,6 +24,7 @@ public class Departament {
     public void addCatedras(Catedra catedra){
         this.catedras.add(catedra);
     }
+
     public String toString(){
         return "Departamento: "+getDepartament();
     }

@@ -9,6 +9,7 @@ public class Llibre {
     private Tema tema;
     private Editorial editorial;
     private Set<Exemplar>exemplars;
+    private String aut;
 
     Llibre(int isbn,Tema tema,Editorial editorial){
         this.isbn=isbn;
@@ -29,7 +30,9 @@ public class Llibre {
     public void addExemplar(Exemplar exemplar){
         this.exemplars.add(exemplar);
     }
+
     public String toString() {
         return "ISBN: "+getIsbn();
     }
+
 }

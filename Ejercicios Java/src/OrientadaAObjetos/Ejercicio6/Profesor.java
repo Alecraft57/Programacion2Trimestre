@@ -20,4 +20,7 @@ public class Profesor {
         this.catedras.add(catedra);
     }
 
+    public String toString() {
+        return "Profesor: "+getProfesor();
+    }
 }
