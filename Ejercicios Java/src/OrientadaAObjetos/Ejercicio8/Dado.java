@@ -5,8 +5,8 @@ public class Dado {
    public int dado2;
    public int dado3;
 
-   Dado(){
-       roll();
+   public Dado(){
+       this.roll();
    }
 
 
