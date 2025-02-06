@@ -19,10 +19,12 @@ public class MainMaquina {
             int ingreso=sc.nextInt();
             MaquinaExpendedora n1 = new MaquinaExpendedora(cerveza, cer,sop);
             if (eleccion==1) {
+                n1.setTique(cerveza);
                 cer++;
                 n1.setCerveza(cer);
                 eleccion=0;
             } else if (eleccion==2) {
+                n1.setTique(sopa);
                 sop++;
                 n1.setSopa(sop);
                 eleccion=0;
