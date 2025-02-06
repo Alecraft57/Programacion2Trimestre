@@ -3,24 +3,24 @@ package OrientadaAObjetos.Laboratorio;
 import java.util.List;
 
 public class Profesor extends Personas {
-    private String nombre;
+    private Personas personas;
     private Lab imparte;
 
-    public Profesor(String nombre){
-        super(nombre);
-        this.nombre=nombre;
+    public Profesor(Personas personas){
+        super(personas.getNombre());
+        this.personas=personas;
     }
 
-    public String getNombre() {
-        return nombre;
+    public Personas getPersonas() {
+        return personas;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setPersonas(Personas personas) {
+        this.personas = personas;
     }
 
     @Override
     public String toString() {
-        return "\nNombre: "+getNombre();
+        return "\nNombre: "+getPersonas();
     }
 }

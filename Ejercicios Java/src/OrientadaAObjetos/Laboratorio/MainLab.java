@@ -9,13 +9,13 @@ public class MainLab {
         Scanner sc=new Scanner(System.in);
         System.out.println("Dime un profesor");
         String pro=sc.nextLine();
-        Profesor profesor =new Profesor(pro);
-        String al = "";
+        Profesor profesor =new Profesor(new Personas(pro));
+        String al;
         List<Estudiantes>estudiantes=new ArrayList<>();
         do {
             System.out.println("Dime que alumnos asisten");
             al = sc.nextLine();
-            Estudiantes alumnos=new Estudiantes(al);
+            Estudiantes alumnos=new Estudiantes(new Personas(al));
             estudiantes.add(alumnos);
         }while (!al.isEmpty());
         Lab ho=new Lab("Laboratorio",2,20,20,2,profesor,estudiantes);
