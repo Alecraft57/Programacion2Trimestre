@@ -31,6 +31,16 @@ public class MotorApp {
         fotografia2.comentarios(coment2);
         fotografia2.comentarios(coment3);
         System.out.println(fotografia2);
+            System.out.println("Quieres darle like a la segunda publicacion?");
+            String res=sc.next();
+            if(res.equals("Si") || res.equals("si")){
+                fotografia2.like();
+                System.out.println(fotografia2);
+            }else if(res.equals("No") || res.equals("no")){
+                System.out.println(fotografia2);
+            }else{
+                throw new RuntimeException("La respuesta tiene que ser si o no");
+            }
         System.out.println("------------------------------------------------------------------");
 } else if (tipopublicacion==2) {
             //TEXTO
@@ -46,6 +56,16 @@ public class MotorApp {
             pM1.comentarios(comentpM1_2);
             pM1.comentarios(comentpM1_3);
             System.out.println(pM1);
+            System.out.println("Quieres darle like a la publicacion?");
+            String res=sc.next();
+            if(res.equals("Si") || res.equals("si")){
+                pM1.like();
+                System.out.println(pM1);
+            }else if(res.equals("No") || res.equals("no")){
+                System.out.println(pM1);
+            }else{
+                throw new RuntimeException("La respuesta tiene que ser si o no");
+            }
         }else{
             throw new RuntimeException("Debe ser o el 1 o el 2");
         }
