@@ -5,27 +5,29 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class client {
-    private int cod_cli;
+public class venedor {
+    private int cod_ven;
     private String nom;
     private String adreca;
     private int cp;
     private int cod_pob;
+    private int cod_cap;
 
-    public client(int cod_cli, String nom, String adreca, int cp, int cod_pob){
-        this.cod_cli=cod_cli;
+    public venedor(int cod_ven, String nom, String adreca, int cp, int cod_pob, int cod_cap){
+        this.cod_ven=cod_ven;
         this.nom=nom;
         this.adreca=adreca;
         this.cp=cp;
         this.cod_pob=cod_pob;
+        this.cod_cap=cod_cap;
     }
 
-    public int getCod_cli() {
-        return cod_cli;
+    public int getCod_ven() {
+        return cod_ven;
     }
 
-    public void setCod_cli(int cod_cli) {
-        this.cod_cli = cod_cli;
+    public void setCod_ven(int cod_ven) {
+        this.cod_ven = cod_ven;
     }
 
     public String getNom() {
@@ -59,56 +61,29 @@ public class client {
     public void setCod_pob(int cod_pob) {
         this.cod_pob = cod_pob;
     }
-    public void insertar(){
-        PreparedStatement st = null;
-        Connection con = null;
-        String sql = "Insert Into client (cod_cli,nom,adreca,cp,cod_pob) Values (?,?,?,?,?)";
+
+    public int getCod_cap() {
+        return cod_cap;
+    }
+
+    public void setCod_cap(int cod_cap) {
+        this.cod_cap = cod_cap;
+    }
+    public void inserter(){
+        Connection con=null;
+        PreparedStatement st=null;
+        String sql="Insert into venedor (cod_ven,nom,adreca,cp,cod_pob,cod_cap) values (?,?,?,?,?,?)";
         try {
-            con = Conexion.Bases.DatabaseConnection.getConnection();
-            st = con.prepareStatement(sql);
-            st.setInt(1,getCod_cli());
+            con=Conexion.Bases.DatabaseConnection.getConnection();
+            st=con.prepareStatement(sql);
+
+            st.setInt(1,getCod_ven());
             st.setString(2,getNom());
             st.setString(3,getAdreca());
             st.setInt(4,getCp());
             st.setInt(5,getCod_pob());
+            st.setInt(6,getCod_cap());
             st.executeUpdate();
-        } catch (SQLException ex) {
-            System.out.println("Error "+ex.getMessage());
-        }
-        try{
-            if(st!=null && !st.isClosed()){
-                st.close();
-            }
-        }catch (SQLException ex){
-            System.out.println("No se ha podido cerrar "+ex.getMessage());
-        }
-        try {
-            if(con!=null && con.isClosed()){
-                con.close();
-            }
-        }catch (SQLException ex){
-            System.out.println("No se ha podido cerrar "+ex.getMessage());
-        }
-    }
-//    public void modificar(){
-//        Statement st =null;
-//        Connection con=null;
-//        String sql;
-//        try {
-//            con = Conexion.Bases.DatabaseConnection.getConnection();
-//            st=con.createStatement();
-//            sql = "Update empleados"
-//        }
-//    }
-    public void eliminar(){
-        Connection con = null;
-        Statement st =null;
-        String sql;
-        try {
-            con = Conexion.Bases.DatabaseConnection.getConnection();
-            st=con.createStatement();
-            sql="Delete from client where cod_cli = 103";
-            st.executeUpdate(sql);
         }catch (SQLException ex){
             System.out.println("Error "+ex.getMessage());
         }
@@ -117,15 +92,41 @@ public class client {
                 st.close();
             }
         } catch (SQLException ex) {
-            System.out.println("No se ha podido cerrar "+ex.getMessage());
+            System.out.println("No se cerro correctamente"+ ex.getMessage());
         }
         try {
             if(con!=null && con.isClosed()){
                 con.close();
             }
-        }catch (SQLException ex){
-            System.out.println("No se ha podido cerrar "+ex.getMessage());
+        } catch (SQLException ex) {
+            System.out.println("No se cerro correctamente"+ ex.getMessage());
         }
     }
-
+    public void eliminar(){
+        Statement st=null;
+        Connection con=null;
+        String sql;
+        try {
+            con=Conexion.Bases.DatabaseConnection.getConnection();
+            st=con.createStatement();
+            sql="delete from venedor where cod_ven = "+getCod_ven();
+            st.executeUpdate(sql);
+        }catch (SQLException ex){
+            System.out.println("Error "+ex.getMessage());
+        }
+        try {
+            if (st!=null && st.isClosed()){
+                st.close();
+            }
+        } catch (SQLException ex) {
+            System.out.println("No se cerro correctamente "+ex.getMessage());
+        }
+        try {
+            if(con!=null && con.isClosed()){
+                con.close();
+            }
+        } catch (SQLException ex) {
+            System.out.println("No se cerro correctamente" +ex.getMessage());
+        }
+    }
 }
