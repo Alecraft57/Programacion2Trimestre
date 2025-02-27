@@ -1,9 +1,6 @@
 package Conexion.Ejercicios;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Date;
+import java.sql.*;
 
 public class factura {
     private int num_f;
@@ -84,6 +81,33 @@ public class factura {
             st.setInt(5,getIva());
             st.setInt(6,getDte());
             st.executeUpdate();
+        }catch (SQLException ex){
+            System.out.println("Error "+ex.getMessage());
+        }
+        try {
+            if (st!=null && st.isClosed()){
+                st.close();
+            }
+        } catch (SQLException ex) {
+            System.out.println("No se cerro correctamente "+ex.getMessage());
+        }
+        try {
+            if(con!=null && con.isClosed()){
+                con.close();
+            }
+        } catch (SQLException ex) {
+            System.out.println("No se cerro correctamente" +ex.getMessage());
+        }
+    }
+    public void eliminar(){
+        Statement st=null;
+        Connection con=null;
+        String sql;
+        try {
+            con=Conexion.Bases.DatabaseConnection.getConnection();
+            st=con.createStatement();
+            sql="delete from factura where num_f = "+getNum_f();
+            st.executeUpdate(sql);
         }catch (SQLException ex){
             System.out.println("Error "+ex.getMessage());
         }

@@ -3,6 +3,7 @@ package Conexion.Ejercicios;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class article {
     private String cod_a;
@@ -72,14 +73,45 @@ public class article {
     public void insertar(){
         Connection con=null;
         PreparedStatement st=null;
-        String sql="insert into article (cod_cat,descripcio) values (?,?)";
+        String sql="insert into article (cod_a,descrip,preu,stock,stock_min,cod_cat) values (?,?,?,?,?,?)";
         try {
             con=Conexion.Bases.DatabaseConnection.getConnection();
             st=con.prepareStatement(sql);
 
-            st.setString(1,getCod_cat());
-            st.setString(2,getDescripcio());
+            st.setString(1,getCod_a());
+            st.setString(2,getDescrip());
+            st.setDouble(3,getPreu());
+            st.setInt(4,getStock());
+            st.setInt(5,getStock_min());
+            st.setString(6,getCod_cat());
             st.executeUpdate();
+        }catch (SQLException ex){
+            System.out.println("Error "+ex.getMessage());
+        }
+        try {
+            if (st!=null && st.isClosed()){
+                st.close();
+            }
+        } catch (SQLException ex) {
+            System.out.println("No se cerro correctamente "+ex.getMessage());
+        }
+        try {
+            if(con!=null && con.isClosed()){
+                con.close();
+            }
+        } catch (SQLException ex) {
+            System.out.println("No se cerro correctamente" +ex.getMessage());
+        }
+    }
+    public void eliminar(){
+        Statement st=null;
+        Connection con=null;
+        String sql;
+        try {
+            con=Conexion.Bases.DatabaseConnection.getConnection();
+            st=con.createStatement();
+            sql="delete from article where cod_a like '%"+getCod_a()+"%'";
+            st.executeUpdate(sql);
         }catch (SQLException ex){
             System.out.println("Error "+ex.getMessage());
         }
