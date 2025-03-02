@@ -1,12 +1,14 @@
 package Conexion.Ejercicios;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Ejecutacion {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         String ResCont;
-        System.out.println("En que tabla quieres modificas?");
+        System.out.println("Que tabla quieres modificar?");
         String tabla=sc.nextLine();
 
         switch (tabla){
@@ -15,7 +17,7 @@ public class Ejecutacion {
                 ResCont=sc.nextLine();
                 switch (ResCont){
                     case "insertar":
-                        System.out.println("Dime un codigo de articulo");
+                            System.out.println("Dime que datos quieres ingresar");
                     case "eliminar":
                         System.out.println("Dime el codigo del articulo que quieras eliminar");
                 }
