@@ -103,14 +103,14 @@ public class article {
             System.out.println("No se cerro correctamente" +ex.getMessage());
         }
     }
-    public void eliminar(){
+    public void eliminar(String cod_a){
         Statement st=null;
         Connection con=null;
         String sql;
         try {
             con=Conexion.Bases.DatabaseConnection.getConnection();
             st=con.createStatement();
-            sql="delete from article where cod_a like '%"+getCod_a()+"%'";
+            sql="delete from article where cod_a like '%"+cod_a+"%'";
             st.executeUpdate(sql);
         }catch (SQLException ex){
             System.out.println("Error "+ex.getMessage());
