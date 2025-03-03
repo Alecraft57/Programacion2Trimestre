@@ -190,7 +190,7 @@ public class article {
             con=Conexion.Bases.DatabaseConnection.getConnection();
             st = con.createStatement();
 
-            sql = "Update article set "+sust+" = "+un+" where "+sust+" = "+dos;
+            sql = "Update article set "+sust+" = '"+dos+"' where "+sust+" = '"+un+"'";
             st.executeUpdate(sql);
         }catch (SQLException ex){
             System.out.println("Error "+ex.getMessage());
