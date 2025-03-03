@@ -16,7 +16,7 @@ public class ModificarEmpleados {
             sql = "Update empleados set sueldo = sueldo * 2";
             st.executeUpdate(sql);
 
-            sql = "Update empleados set departamento = 20 where num = 1";
+            sql = "Update article set departamento = 20 where num = 1";
             st.executeUpdate(sql);
         }catch (SQLException ex){
             System.out.println("Error "+ex.getMessage());

@@ -11,9 +11,13 @@ public class Ejecutacion {
         switch (tabla) {
             case "article":
                 article a = new article();
-                System.out.println("Quieres insertar o elimiar contenido?");
+                System.out.println("Quieres insertar, elimiar o modificar contenido?");
                 ResCont = sc.nextLine();
                 switch (ResCont) {
+                    case "mostrar":
+                        System.out.println("Dime que quieres que muestre(Dime el cod_a)");
+                        String consulta=sc.nextLine();
+                        a.mostrar(consulta);
                     case "insertar":
                         System.out.println("Dime el codigo autor");
                         String cod_a = sc.nextLine();
@@ -35,14 +39,27 @@ public class Ejecutacion {
                         System.out.println("Dime la categoria");
                         String cod_cat = sc.nextLine();
                         a.insertar(cod_a, descrip, preu, stock, stock_min, cod_cat);
+                        a.mostrar(cod_a);
                         break;
                     case "eliminar":
                         System.out.println("Dime el codigo del articulo que quieras eliminar");
                         String eliminar = sc.nextLine();
                         a.eliminar(eliminar);
                         break;
+                    case "modificar":
+                        System.out.println("Dime que quieres sustituir");
+                        String sust=sc.nextLine();
+                            switch (sust){
+                                case "cod_a":
+                                    System.out.println("Dime el cod_a");
+                                    String c=sc.nextLine();
+                                    System.out.println("Dime por que quieres sustituirlo");
+                                    String cc=sc.nextLine();
+                                    a.modificar(sust,c,cc);
+                                    break;
+                            }
                     default:
-                        System.out.println("Debe ser ingresar o eliminar");
+                        System.out.println("Debe ser mostrar,eliminar,modificar o insertar");
                 }
                 break;
             case "categoria":
