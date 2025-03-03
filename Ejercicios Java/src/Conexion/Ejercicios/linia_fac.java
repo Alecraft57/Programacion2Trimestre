@@ -73,7 +73,7 @@ public class linia_fac {
     public void insertar(int num_f,int num_l,String cod_a, int quant, double preu, int dte){
         PreparedStatement st=null;
         Connection con=null;
-        String sql="inster into linia_fac (num_f,num_l,cod_a,quant,preu,dte) values (?,?,?,?,?,?)";
+        String sql="insert into linia_fac (num_f,num_l,cod_a,quant,preu,dte) values (?,?,?,?,?,?)";
 
         try {
             con=Conexion.Bases.DatabaseConnection.getConnection();
@@ -85,7 +85,7 @@ public class linia_fac {
 //            st.setInt(4,getQuant());
 //            st.setDouble(5,getPreu());
 //            st.setInt(6,getDte());
-            st.executeUpdate();
+//            st.executeUpdate();
             //prueba
             st.setInt(1,num_f);
             st.setInt(2,num_l);
