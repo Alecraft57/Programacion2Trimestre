@@ -1,9 +1,6 @@
 package Conexion.Ejercicios;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class poble {
     private int cod_pob;
@@ -98,6 +95,81 @@ public class poble {
             }
         }catch (SQLException ex){
             System.out.println("No se ha podido cerrar "+ex.getMessage());
+        }
+    }
+    public void mostrar(String cod_pob) {
+        Connection con = null;
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            con = Conexion.Bases.DatabaseConnection.getConnection();
+            st = con.createStatement();
+            rs = st.executeQuery("select * from client where cod_pob like " + cod_pob + " order by cod_pob");
+
+            System.out.println("cod_pob | \tnom | \tcod_pro ");
+            System.out.println("----------------------------------------");
+
+            while (rs.next()) {
+                System.out.print(rs.getString(1) + " |\t");
+                System.out.print(rs.getString(2) + " |\t");
+                System.out.print(rs.getString(3) + " |\t");
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error " + ex.getMessage());
+        } finally {
+            try {
+                if (st != null && !st.isClosed()) {
+                    st.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("No se ha podido cerrar " + ex.getMessage());
+            }
+            try {
+                if (con != null && !con.isClosed()) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("No se ha podido cerrar " + ex.getMessage());
+            }
+            try {
+                if (rs != null && !rs.isClosed()) {
+                    rs.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("No se ha podido cerrar " + ex.getMessage());
+            }
+        }
+    }
+    public void modificar(String sust,String un,String dos){
+        Connection con =null;
+        Statement st =null;
+        String sql;
+        try {
+            con=Conexion.Bases.DatabaseConnection.getConnection();
+            st = con.createStatement();
+            if(sust.equals("cod_pob") && sust.equals("cod_pro")){
+                sql = "Update article set "+sust+" = "+dos+" where "+sust+" = "+un;
+            }else {
+                sql = "Update article set " + sust + " = '" + dos + "' where " + sust + " = '" + un + "'";
+            }
+            st.executeUpdate(sql);
+        }catch (SQLException ex){
+            System.out.println("Error "+ex.getMessage());
+        }finally {
+            try {
+                if (st != null && !st.isClosed()) {
+                    st.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("No se ha podido cerrar " + ex.getMessage());
+            }
+            try {
+                if (con != null && !con.isClosed()) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("No se ha podido cerrar " + ex.getMessage());
+            }
         }
     }
 }

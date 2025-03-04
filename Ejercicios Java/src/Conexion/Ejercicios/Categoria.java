@@ -2,10 +2,7 @@ package Conexion.Ejercicios;
 
 import org.checkerframework.checker.units.qual.C;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Categoria {
     private String cod_cat;
@@ -88,6 +85,49 @@ public class Categoria {
             System.out.println("No se cerro correctamente" +ex.getMessage());
         }
     }
+    public void mostrar(String cod_cat) {
+        Connection con = null;
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            con = Conexion.Bases.DatabaseConnection.getConnection();
+            st = con.createStatement();
+            rs = st.executeQuery("select * from categoria where cod_cat like '%" + cod_cat + "%' order by cod_cat");
+
+            System.out.println("cod_cat | \tdescripcio");
+            System.out.println("-----------------------------------");
+
+            while (rs.next()) {
+                System.out.print(rs.getString(1) + " |\t");
+                System.out.print(rs.getString(2) + " |\t");
+
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error " + ex.getMessage());
+        } finally {
+            try {
+                if (st != null && !st.isClosed()) {
+                    st.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("No se ha podido cerrar " + ex.getMessage());
+            }
+            try {
+                if (con != null && !con.isClosed()) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("No se ha podido cerrar " + ex.getMessage());
+            }
+            try {
+                if (rs != null && !rs.isClosed()) {
+                    rs.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("No se ha podido cerrar " + ex.getMessage());
+            }
+        }
+    }
     public void modificar(String sust,String un,String dos){
         Connection con =null;
         Statement st =null;
@@ -95,8 +135,7 @@ public class Categoria {
         try {
             con=Conexion.Bases.DatabaseConnection.getConnection();
             st = con.createStatement();
-
-            sql = "Update categoria set "+sust+" = '"+dos+"' where "+sust+" = '"+un+"'";
+            sql = "Update categoria set " + sust + " = '" + dos + "' where " + sust + " = '" + un + "'";
             st.executeUpdate(sql);
         }catch (SQLException ex){
             System.out.println("Error "+ex.getMessage());

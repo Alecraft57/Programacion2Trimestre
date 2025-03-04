@@ -135,5 +135,82 @@ public class factura {
             System.out.println("No se cerro correctamente" +ex.getMessage());
         }
     }
+    public void mostrar(String num_f) {
+        Connection con = null;
+        Statement st = null;
+        ResultSet rs = null;
+        try {
+            con = Conexion.Bases.DatabaseConnection.getConnection();
+            st = con.createStatement();
+            rs = st.executeQuery("select * from client where num_f like " + num_f + " order by num_f");
 
+            System.out.println("num_f | \tdata | \tcod_cli | \tcod_ven | \tiva | \tdte");
+            System.out.println("---------------------------------------------------------------");
+
+            while (rs.next()) {
+                System.out.print(rs.getString(1) + " |\t");
+                System.out.print(rs.getString(2) + " |\t");
+                System.out.print(rs.getString(3) + " |\t");
+                System.out.print(rs.getString(4) + " |\t");
+                System.out.print(rs.getString(5) + " |\t");
+                System.out.print(rs.getString(6) + " |\t");
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error " + ex.getMessage());
+        } finally {
+            try {
+                if (st != null && !st.isClosed()) {
+                    st.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("No se ha podido cerrar " + ex.getMessage());
+            }
+            try {
+                if (con != null && !con.isClosed()) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("No se ha podido cerrar " + ex.getMessage());
+            }
+            try {
+                if (rs != null && !rs.isClosed()) {
+                    rs.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("No se ha podido cerrar " + ex.getMessage());
+            }
+        }
+    }
+    public void modificar(String sust,String un,String dos){
+        Connection con =null;
+        Statement st =null;
+        String sql;
+        try {
+            con=Conexion.Bases.DatabaseConnection.getConnection();
+            st = con.createStatement();
+            if(sust.equals("num_f") && sust.equals("cod_cli") && sust.equals("cod_ven") && sust.equals("iva") && sust.equals("dte")){
+                sql = "Update article set "+sust+" = "+dos+" where "+sust+" = "+un;
+            }else {
+                sql = "Update article set " + sust + " = '" + dos + "' where " + sust + " = '" + un + "'";
+            }
+            st.executeUpdate(sql);
+        }catch (SQLException ex){
+            System.out.println("Error "+ex.getMessage());
+        }finally {
+            try {
+                if (st != null && !st.isClosed()) {
+                    st.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("No se ha podido cerrar " + ex.getMessage());
+            }
+            try {
+                if (con != null && !con.isClosed()) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("No se ha podido cerrar " + ex.getMessage());
+            }
+        }
+    }
 }

@@ -189,8 +189,11 @@ public class article {
         try {
             con=Conexion.Bases.DatabaseConnection.getConnection();
             st = con.createStatement();
-
-            sql = "Update article set "+sust+" = '"+dos+"' where "+sust+" = '"+un+"'";
+            if(sust.equals("preu") && sust.equals("stock") && sust.equals("stock_min")){
+                sql = "Update article set "+sust+" = "+dos+" where "+sust+" = "+un;
+            }else {
+                sql = "Update article set " + sust + " = '" + dos + "' where " + sust + " = '" + un + "'";
+            }
             st.executeUpdate(sql);
         }catch (SQLException ex){
             System.out.println("Error "+ex.getMessage());
