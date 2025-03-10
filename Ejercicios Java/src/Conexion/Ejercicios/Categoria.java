@@ -88,4 +88,33 @@ public class Categoria {
             System.out.println("No se cerro correctamente" +ex.getMessage());
         }
     }
+    public void modificar(String sust,String un,String dos){
+        Connection con =null;
+        Statement st =null;
+        String sql;
+        try {
+            con=Conexion.Bases.DatabaseConnection.getConnection();
+            st = con.createStatement();
+
+            sql = "Update categoria set "+sust+" = '"+dos+"' where "+sust+" = '"+un+"'";
+            st.executeUpdate(sql);
+        }catch (SQLException ex){
+            System.out.println("Error "+ex.getMessage());
+        }finally {
+            try {
+                if (st != null && !st.isClosed()) {
+                    st.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("No se ha podido cerrar " + ex.getMessage());
+            }
+            try {
+                if (con != null && !con.isClosed()) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("No se ha podido cerrar " + ex.getMessage());
+            }
+        }
+    }
 }

@@ -57,7 +57,22 @@ public class Ejecutacion {
                                     String cc=sc.nextLine();
                                     a.modificar(sust,c,cc);
                                     break;
+                                case "descrip":
+                                    System.out.println("Dime la descripcion");
+                                    String d=sc.nextLine();
+                                    System.out.println("Dime por que quieres sustituirlo");
+                                    String dd=sc.nextLine();
+                                    a.modificar(sust,d,dd);
+                                    break;
+                                case "preu":
+                                    System.out.println("Dime el preu");
+                                    String p=sc.nextLine();
+                                    System.out.println("Dime por que quieres sustituirlo");
+                                    String pp=sc.nextLine();
+                                    a.modificar(sust,p,pp);
+                                    break;
                             }
+                            break;
                     default:
                         System.out.println("Debe ser mostrar,eliminar,modificar o insertar");
                 }
