@@ -136,6 +136,42 @@ public class Eventos {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
+    }
+    public void consultar_todo(){
+        Connection con=null;
+        Statement st=null;
+        String url="jdbc:sqlite:Concierto.db";
+        String sql;
+        ResultSet rs=null;
+        try {
+            con=DriverManager.getConnection(url);
+            st=con.createStatement();
+            sql="select * from eventos";
+            rs=st.executeQuery(sql);
+            System.out.println("id_eventos\t | nombre_eventos\t | fecha\t | hora");
+            System.out.println("--------------------------------------------------------------------------");
+            while (rs.equals(null)){
+                System.out.print(rs.getInt(1)+"\t\t | ");
+                System.out.print(rs.getString(2)+" \t\t | ");
+                System.out.print(rs.getString(3)+" \t\t | ");
+                System.out.print(rs.getInt(4)+" \t\t");
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        try {
+            if(con!=null && con.isClosed()){
+                con.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            if(st!=null && st.isClosed()){
+                st.close();
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

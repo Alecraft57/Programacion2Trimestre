@@ -12,7 +12,7 @@ public class main {
             case 1:
                 Eventos e=new Eventos();
                 System.out.println("Que quieres hacer?");
-                System.out.println("-1: insertar\n-2: eliminar(basandote en un id)\n-3: consulta(basandote en un id)\n-4: actualizar\n-6: Salir");
+                System.out.println("-1: insertar\n-2: eliminar(basandote en un id)\n-3: consulta(basandote en un id)\n-4: actualizar\n-5: consulta todas las tablas\n-6: Salir");
                 int funcion=sc.nextInt();
                 switch (funcion){
                     case 1:
@@ -43,6 +43,9 @@ public class main {
                         System.out.println("Dime el nuevo id");
                         int evento_id_nuevo_actualizar=sc.nextInt();
                         e.actualizar(evento_id_actual_actualizar,evento_id_nuevo_actualizar);
+                        break;
+                    case 5:
+                        e.consultar_todo();
                         break;
                     case 6:
                         System.out.println("Has salido correctamente");
