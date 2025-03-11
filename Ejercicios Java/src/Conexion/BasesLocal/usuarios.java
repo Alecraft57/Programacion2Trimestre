@@ -9,9 +9,9 @@ public class usuarios {
     private String tipo_usuario;
 
     public void insertar(int id_usuarios,String nombre,String TF,String tipo_usuario){
+        String sql="insert into usuarios (id_usuarios,nombre,TF,tipo_usuario) values (?,?,?,?)";
         Connection con=null;
         PreparedStatement st=null;
-        String sql="insert into usuarios (id_usuarios,nombre,TF,tipo_usuario) values (?,?,?,?)";
         String url="jdbc:sqlite:Concierto.db";
         try {
             con= DriverManager.getConnection(url);
@@ -26,6 +26,22 @@ public class usuarios {
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        }
+        try {
+            if(con!=null && con.isClosed()){
+                con.close();
+                System.out.println("Conexion cerrada");
+            }
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        try {
+            if(st!=null && st.isClosed()){
+                st.close();
+                System.out.println("Conexion cerrada");
+            }
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
         }
     }
 }
