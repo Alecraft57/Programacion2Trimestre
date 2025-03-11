@@ -11,15 +11,15 @@ public class Eventos {
     private int hora;
 
     public void insertar(int id_eventos,String nombre_evento,String fecha, int hora){
-        String url="jdbc:sqlite:Conciertos.db";
+        String url="jdbc:sqlite:Concierto.db";
         Connection con=null;
         PreparedStatement st=null;
-        String sql="insert into Eventos (id_eventos,nombre_evento,fecha,hora) values(?,?,?,?)";
+        String sql="insert into eventos (id_eventos,nombre_evento,fecha,hora) values(?,?,?,?)";
         try {
             con= DriverManager.getConnection(url);
-            System.out.println("La conexion ha sido exitosa");
+            System.out.println("La conexion ha sido exitosa(evento)");
             st=con.prepareStatement(sql);
-
+            System.out.println("Detectado");
             st.setInt(1,id_eventos);
             st.setString(2,nombre_evento);
             st.setString(3,fecha);
