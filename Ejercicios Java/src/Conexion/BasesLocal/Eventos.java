@@ -150,11 +150,12 @@ public class Eventos {
             rs=st.executeQuery(sql);
             System.out.println("id_eventos\t | nombre_eventos\t | fecha\t | hora");
             System.out.println("--------------------------------------------------------------------------");
-            while (rs.equals(null)){
+            while (rs.next()){
                 System.out.print(rs.getInt(1)+"\t\t | ");
                 System.out.print(rs.getString(2)+" \t\t | ");
                 System.out.print(rs.getString(3)+" \t\t | ");
                 System.out.print(rs.getInt(4)+" \t\t");
+                System.out.println("\n");
             }
         }catch (Exception e){
             System.out.println(e.getMessage());
