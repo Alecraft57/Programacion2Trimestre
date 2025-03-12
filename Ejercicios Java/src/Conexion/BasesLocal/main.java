@@ -119,6 +119,45 @@ public class main {
                             System.out.println("Creando tabla...");
                             ub.creartabla();
                             break;
+                        case 2:
+                            System.out.println("Dime el id de la ubicacion");
+                            int ubicacion_id_insertar=sc.nextInt();
+                            System.out.println("Dime el id del evento");
+                            int ubicacion_evento_insertar=sc.nextInt();
+                            sc.nextLine();
+                            System.out.println("Dime la zona");
+                            String ubicacion_zona_insertar=sc.nextLine();
+                            System.out.println("Dime la capacidad de la zona");
+                            int ubicacion_capacidad_insertar= sc.nextInt();
+                            ub.insertar(ubicacion_id_insertar,ubicacion_evento_insertar,ubicacion_zona_insertar,ubicacion_capacidad_insertar);
+                            break;
+                        case 3:
+                            System.out.println("Dime el id de la ubicacion");
+                            int ubicacion_id_eliminar=sc.nextInt();
+                            ub.eliminar(ubicacion_id_eliminar);
+                            break;
+                        case 4:
+                            System.out.println("Dime el id de la ubicacion para consultarla");
+                            int ubicacion_id_consultar=sc.nextInt();
+                            ub.consultar(ubicacion_id_consultar);
+                            break;
+                        case 5:
+                            System.out.println("Dime el id que quieras actualizar");
+                            int ubicacion_id_actual_actualizar = sc.nextInt();
+                            System.out.println("Dime el nuevo id");
+                            int ubicacion_id_nuevo_actualizar = sc.nextInt();
+                            ub.actualizar(ubicacion_id_actual_actualizar, ubicacion_id_nuevo_actualizar);
+                            break;
+                        case 6:
+                            ub.consultartodo();
+                            System.out.println("Aqui tienes la tabla !!");
+                            break;
+                        case 7:
+                            System.out.println("Has salido correctamente");
+                            re = "n";
+                            break;
+                        default:
+                            System.out.println("Saliendo al menu");
                     }
                     break;
                 case 6:
