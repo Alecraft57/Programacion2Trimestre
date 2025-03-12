@@ -8,7 +8,7 @@ public class main {
         String re = "s";
         while (re.equals("s")) {
         System.out.println("Dime con que tabla quieres interactuar");
-        System.out.println("-1: eventos\n-2: usuarios\n-3: salir");
+        System.out.println("-1: eventos\n-2: usuarios\n-3: ubicacion\n-6: salir");
         int tabla = sc.nextInt();
             switch (tabla) {
                 case 1:
@@ -87,7 +87,7 @@ public class main {
                             break;
                         case 4:
                             System.out.println("Dime el id para consultar el usuario");
-                            int usuario_id_consultar=sc.nextInt();
+                            int usuario_id_consultar = sc.nextInt();
                             us.consultar(usuario_id_consultar);
                             break;
                         case 5:
@@ -95,17 +95,33 @@ public class main {
                             int usuario_id_actual_actualizar = sc.nextInt();
                             System.out.println("Dime el nuevo id");
                             int usuario_id_nuevo_actualizar = sc.nextInt();
-                            us.actualizar(usuario_id_actual_actualizar,usuario_id_nuevo_actualizar);
+                            us.actualizar(usuario_id_actual_actualizar, usuario_id_nuevo_actualizar);
                             break;
                         case 6:
                             us.consultartodo();
                             System.out.println("Aqui tienes la tabla !!");
+                            break;
                         case 7:
                             System.out.println("Has salido correctamente");
                             re = "n";
+                            break;
+                        default:
+                            System.out.println("Saliendo al menu");
                     }
                     break;
                 case 3:
+                    ubicacion ub=new ubicacion();
+                    System.out.println("Que quieres hacer?");
+                    System.out.println("-1: Crear(Ya esta hecha)\n-2: insertar\n-3: eliminar(basandote en un id)\n-4: consulta(basandote en un id)\n-5: actualizar\n-6: consulta todas las tablas\n-7: Salir");
+                    int ub_funcion = sc.nextInt();
+                    switch (ub_funcion) {
+                        case 1:
+                            System.out.println("Creando tabla...");
+                            ub.creartabla();
+                            break;
+                    }
+                    break;
+                case 6:
                     System.out.println("Has salido correctamente");
                     re = "n";
             }
