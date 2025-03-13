@@ -133,7 +133,7 @@ public class ubicacion {
             System.out.println(ex.getMessage());
         }
     }
-    public void actualizar(int act,int nuevo){
+    public void actualizar_zona(int id,String zona){
         Connection con=null;
         Statement st=null;
         String url="jdbc:sqlite:Concierto.db";
@@ -141,7 +141,7 @@ public class ubicacion {
         try {
             con=DriverManager.getConnection(url);
             st=con.createStatement();
-            sql="Update ubicacion set id_ubicacion = "+nuevo+" where id_ubicacion = "+act;
+            sql="Update ubicacion set zona = '"+zona+"' where id_ubicacion = "+id;
             st.executeUpdate(sql);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -176,10 +176,10 @@ public class ubicacion {
             System.out.println("id_ubicacion\t | id_eventos \t | zona \t | capacidad \t |");
             System.out.println("----------------------------------------------------------------------------");
             while(rs.next()){
-                System.out.print(rs.getInt(1)+"\t\t |");
-                System.out.print(rs.getInt(2)+"\t\t |");
-                System.out.print(rs.getString(3)+"\t\t |");
-                System.out.print(rs.getInt(4)+"\t\t\n");
+                System.out.print(rs.getInt(1)+"\t\t | ");
+                System.out.print(rs.getInt(2)+"\t\t | ");
+                System.out.print(rs.getString(3)+"\t\t | ");
+                System.out.print(rs.getInt(4)+"\t\t | \n");
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());

@@ -8,7 +8,7 @@ public class main {
         String re = "s";
         while (re.equals("s")) {
         System.out.println("Dime con que tabla quieres interactuar");
-        System.out.println("-1: eventos\n-2: usuarios\n-3: ubicacion\n-6: salir");
+        System.out.println("-1: eventos\n-2: usuarios\n-3: ubicacion\n-4: reservas\n-6: salir");
         int tabla = sc.nextInt();
             switch (tabla) {
                 case 1:
@@ -112,7 +112,7 @@ public class main {
                 case 3:
                     ubicacion ub=new ubicacion();
                     System.out.println("Que quieres hacer?");
-                    System.out.println("-1: Crear(Ya esta hecha)\n-2: insertar\n-3: eliminar(basandote en un id)\n-4: consulta(basandote en un id)\n-5: actualizar\n-6: consulta todas las tablas\n-7: Salir");
+                    System.out.println("-1: Crear(Ya esta hecha)\n-2: insertar\n-3: eliminar(basandote en un id)\n-4: consulta(basandote en un id)\n-5: actualizar zona\n-6: consulta todas las tablas\n-7: Salir");
                     int ub_funcion = sc.nextInt();
                     switch (ub_funcion) {
                         case 1:
@@ -144,9 +144,9 @@ public class main {
                         case 5:
                             System.out.println("Dime el id que quieras actualizar");
                             int ubicacion_id_actual_actualizar = sc.nextInt();
-                            System.out.println("Dime el nuevo id");
-                            int ubicacion_id_nuevo_actualizar = sc.nextInt();
-                            ub.actualizar(ubicacion_id_actual_actualizar, ubicacion_id_nuevo_actualizar);
+                            System.out.println("Dime la nueva zona");
+                            String ubicacion_zona_actualizar = sc.nextLine();
+                            ub.actualizar_zona(ubicacion_id_actual_actualizar, ubicacion_zona_actualizar);
                             break;
                         case 6:
                             ub.consultartodo();
@@ -160,9 +160,64 @@ public class main {
                             System.out.println("Saliendo al menu");
                     }
                     break;
+                case 4:
+                    Reservas rs=new Reservas();
+                    System.out.println("Que quieres hacer?");
+                    System.out.println("-1: Crear(Ya esta hecha)\n-2: crear reserva\n-3: eliminar(basandote en un id)\n-4: consulta(basandote en un id)\n-5: actualizar fecha\n-6: consulta todas las tablas\n-7: Salir");
+                    int rs_funcion=sc.nextInt();
+                    switch (rs_funcion){
+                        case 1:
+                            rs.creartabla();
+                            break;
+                        case 2:
+                            System.out.println("Dime el id de la reserva");
+                            int reserva_id_insertar=sc.nextInt();
+                            System.out.println("Dime el id usuario");
+                            int reserva_usuario_insertar=sc.nextInt();
+                            System.out.println("Dime el id del evento");
+                            int reserva_evento_insertar=sc.nextInt();
+                            sc.nextLine();
+                            System.out.println("Dime la fecha");
+                            String reserva_fecha_insertar=sc.nextLine();
+                            rs.insertar(reserva_id_insertar,reserva_usuario_insertar,reserva_evento_insertar,reserva_fecha_insertar);
+                            break;
+                        case 3:
+                            System.out.println("Dime el id de la reserva que quieres eliminar");
+                            int reserva_id_eliminar=sc.nextInt();
+                            rs.eliminar(reserva_id_eliminar);
+                            break;
+                        case 4:
+                            System.out.println("Dime el id de la reserva para hacer una consulta");
+                            int reserva_id_consultar=sc.nextInt();
+                            rs.consultarid(reserva_id_consultar);
+                            break;
+                        case 5:
+                            System.out.println("Dime el id de la reserva para hacer una actualizacion en fecha");
+                            int reserva_id_actualizar=sc.nextInt();
+                            sc.nextLine();
+                            System.out.println("Dime la nueva fecha");
+                            String reserva_fecha_actualzar=sc.nextLine();
+                            rs.actualizar(reserva_id_actualizar,reserva_fecha_actualzar);
+                            break;
+                        case 6:
+                            rs.consultartodo();
+                            System.out.println("Aqui tienes todo!!");
+                            break;
+                        case 7:
+                            System.out.println("Has salido correctamente");
+                            re = "n";
+                            break;
+                        default:
+                            System.out.println("Saliendo al menu");
+                    }
+                    break;
                 case 6:
                     System.out.println("Has salido correctamente");
                     re = "n";
+                    break;
+                default:
+                    System.out.println("Apagando Conexion...");
+                    re="n";
             }
         }
     }
