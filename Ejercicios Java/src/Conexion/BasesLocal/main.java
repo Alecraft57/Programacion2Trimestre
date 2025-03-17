@@ -8,7 +8,7 @@ public class main {
         String re = "s";
         while (re.equals("s")) {
         System.out.println("Dime con que tabla quieres interactuar");
-        System.out.println("-1: eventos\n-2: usuarios\n-3: ubicacion\n-4: reservas\n-6: salir");
+        System.out.println("-1: eventos\n-2: usuarios\n-3: ubicacion\n-4: reservas\n-5: pagado\n-6: salir");
         int tabla = sc.nextInt();
             switch (tabla) {
                 case 1:
@@ -202,6 +202,43 @@ public class main {
                         case 6:
                             rs.consultartodo();
                             System.out.println("Aqui tienes todo!!");
+                            break;
+                        case 7:
+                            System.out.println("Has salido correctamente");
+                            re = "n";
+                            break;
+                        default:
+                            System.out.println("Saliendo al menu");
+                    }
+                    break;
+                case 5:
+                    pagado p=new pagado();
+                    System.out.println("Que quieres hacer?");
+                    System.out.println("-1: Crear(Ya esta hecha)\n-2: crear reserva\n-3: eliminar(basandote en un id)\n-4: consulta(basandote en un id)\n-5: actualizar fecha\n-6: consulta todas las tablas\n-7: Salir");
+                    int p_funcion=sc.nextInt();
+                    switch (p_funcion){
+                        case 1:
+                            p.creartabla();
+                            break;
+                        case 2:
+                            System.out.println("Dime el id de el pago");
+                            int pagado_id_insertar=sc.nextInt();
+                            System.out.println("Dime el id de la reserva");
+                            int pagado_reserva_insertar=sc.nextInt();
+                            sc.nextLine();
+                            System.out.println("Dime el estado(Pagado-No Pagado)");
+                            String pagado_estado_insertar=sc.nextLine();
+                            p.insertar(pagado_id_insertar,pagado_reserva_insertar,pagado_estado_insertar);
+                            break;
+                        case 3:
+                            System.out.println("Dime el id del pago que quieres eliminar");
+                            int pagado_id_eliminar=sc.nextInt();
+                            p.eliminar(pagado_id_eliminar);
+                            break;
+                        case 4:
+                            System.out.println("Dime el id del pago para hacer una consulta");
+                            int pagado_id_consultar=sc.nextInt();
+                            p.consultar(pagado_id_consultar);
                             break;
                         case 7:
                             System.out.println("Has salido correctamente");

@@ -18,7 +18,6 @@ public class usuarios {
             st=con.createStatement();
             sql="Create Table usuarios (id_usuario integer, nombre_usuario text, TF integer, tipo_usuario text, primary key(id_usuario))";
             st.executeUpdate(sql);
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
