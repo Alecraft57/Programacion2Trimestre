@@ -163,7 +163,7 @@ public class main {
                 case 4:
                     Reservas rs=new Reservas();
                     System.out.println("Que quieres hacer?");
-                    System.out.println("-1: Crear(Ya esta hecha)\n-2: crear reserva\n-3: eliminar(basandote en un id)\n-4: consulta(basandote en un id)\n-5: actualizar fecha\n-6: consulta todas las tablas\n-7: Salir");
+                    System.out.println("-1: Crear(Ya esta hecha)\n-2: crear reserva\n-3: eliminar(basandote en un id)\n-4: consulta(basandote en un id)\n-5: actualizar fecha\n-6: consulta todas las tablas\n-7:Imprimir por id\n-8: Salir");
                     int rs_funcion=sc.nextInt();
                     switch (rs_funcion){
                         case 1:
@@ -204,6 +204,11 @@ public class main {
                             System.out.println("Aqui tienes todo!!");
                             break;
                         case 7:
+                            System.out.println("Dime el id para la reserva");
+                            int reserva_id_imprimir=sc.nextInt();
+                            rs.imprimirreservaporid(reserva_id_imprimir);
+                            break;
+                        case 8:
                             System.out.println("Has salido correctamente");
                             re = "n";
                             break;
@@ -214,7 +219,7 @@ public class main {
                 case 5:
                     pagado p=new pagado();
                     System.out.println("Que quieres hacer?");
-                    System.out.println("-1: Crear(Ya esta hecha)\n-2: crear reserva\n-3: eliminar(basandote en un id)\n-4: consulta(basandote en un id)\n-5: actualizar fecha\n-6: consulta todas las tablas\n-7: Salir");
+                    System.out.println("-1: Crear(Ya esta hecha)\n-2: Crear pago\n-3: eliminar(basandote en un id)\n-4: consulta(basandote en un id)\n-5: actualizar estado\n-6: consulta todas las tablas\n-7: Salir");
                     int p_funcion=sc.nextInt();
                     switch (p_funcion){
                         case 1:
@@ -239,6 +244,18 @@ public class main {
                             System.out.println("Dime el id del pago para hacer una consulta");
                             int pagado_id_consultar=sc.nextInt();
                             p.consultar(pagado_id_consultar);
+                            break;
+                        case 5:
+                            System.out.println("Dime el id de el pago para cambiarle el estado");
+                            int pagado_id_actualizar=sc.nextInt();
+                            sc.nextLine();
+                            System.out.println("Dime el nuevo estado del pago");
+                            String pagado_estado_actualizar=sc.nextLine();
+                            p.actualizar(pagado_id_actualizar,pagado_estado_actualizar);
+                            break;
+                        case 6:
+                            p.consultartodo();
+                            System.out.println("Aqui tienes todos los pagos!!");
                             break;
                         case 7:
                             System.out.println("Has salido correctamente");

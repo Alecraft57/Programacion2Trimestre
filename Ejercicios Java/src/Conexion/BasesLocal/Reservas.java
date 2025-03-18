@@ -3,6 +3,7 @@ package Conexion.BasesLocal;
 import OrientadaAObjetos.EntidadRelacio.Ejemplos.Person;
 
 import java.sql.*;
+import java.util.Scanner;
 
 public class Reservas {
 
@@ -104,6 +105,36 @@ public class Reservas {
             System.out.println("Error al consultar, motivo: "+e.getMessage());
         }finally {
             DBconexion.cerrar(con);
+        }
+    }
+    public void imprimirreservaporid(int id_reserva){
+        String sql="select reservas.id_reserva, usuarios.nombre_usuario as user, usuarios.TF as num" +
+                ",eventos.nombre_evento as evento, eventos.fecha as fec, eventos.hora as hour" +
+                "                from eventos inner join reservas using(id_eventos) inner join usuarios using(id_usuario)" +
+                "                where id_reserva=?";
+        try (Connection con=DBconexion.conectar();
+                PreparedStatement pst=con.prepareStatement(sql)){
+            pst.setInt(1,id_reserva);
+            ResultSet rs=pst.executeQuery();
+
+            if (rs.next()){
+                System.out.println("\n╔═════════════════════════════════════════╗");
+                System.out.println("║         DETALLE DE RESERVA              ║");
+                System.out.println("╠═════════════════════════════════════════╣");
+
+                System.out.printf("║ %-15s: %-20s   ║\n", "ID Reserva", rs.getInt("id_reserva"));
+                System.out.printf("║ %-15s: %-20s   ║\n", "Usuario", rs.getString("user"));
+                System.out.printf("║ %-15s: %-20s   ║\n", "Telefono", rs.getString("num"));
+                System.out.printf("║ %-15s: %-20s   ║\n", "Evento", rs.getString("evento"));
+                System.out.printf("║ %-15s: %-20s   ║\n", "Fecha", rs.getString("fec"));
+                System.out.printf("║ %-15s: %-20s   ║\n", "Hora", rs.getInt("hour"));
+                System.out.println("╚═════════════════════════════════════════╝");
+            }
+            else {
+                System.out.println("No se encontró nada");
+            }
+        }catch (SQLException e){
+            System.out.println("Error, motivo: "+e.getMessage());
         }
     }
 }
