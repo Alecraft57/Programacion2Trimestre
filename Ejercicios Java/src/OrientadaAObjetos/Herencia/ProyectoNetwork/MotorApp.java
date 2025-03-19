@@ -11,6 +11,7 @@ public class MotorApp {
             System.out.println("Dime q autor eres");
             String aut = sc.next();
             ArrayList<String> au = new ArrayList<>();
+            sc.nextLine();
             System.out.println("Dime que tipo de publicacion quieres subir");
             System.out.println("1.FOTO       2.TEXTO");
             int tipopublicacion = sc.nextInt();
@@ -61,8 +62,8 @@ public class MotorApp {
             } else if (tipopublicacion == 2) {
                 //TEXTO
                 //texto1
-                PublicacionMensaje pM1 = new PublicacionMensaje(12, "A tope!!", "Matias", "Estoy a tope jefe de equipo");
-                for (int i = 0; i < 300; i++) {
+                PublicacionMensaje pM1 = new PublicacionMensaje(12, "A tope!!", aut , "Estoy a tope jefe de equipo");
+                for (int i = 0; i < 234; i++) {
                     pM1.like();
                 }
                 String comentpM1_1 = "GRANDE!!";
@@ -85,6 +86,7 @@ public class MotorApp {
             } else {
                 throw new RuntimeException("Debe ser o el 1 o el 2");
             }
+            sc.nextLine();
             System.out.println("Quieres continuar haciendo cosas?");
             cont=sc.nextInt();
         }while(cont!=2);

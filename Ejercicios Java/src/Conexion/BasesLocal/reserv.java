@@ -1,15 +1,29 @@
 package Conexion.BasesLocal;
 
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 public class reserv {
 
+//    public void menu(){
+//        Scanner sc=new Scanner(System.in);
+//        int opcion;
+//        do{
+//            System.out.println("-1: insertar\n-2: eliminar(basandote en un id)\n-3: consulta(basandote en un id)\n-4: actualizar\n-5: consulta todas las tablas\n-6: Salir");
+//            opcion=sc.nextInt();
+//            switch (opcion){
+//                case 1:createtable();
+//                case 2:insertar();
+//            }
+//        }while (opcion!=6);
+//    }
     public void createtable(){
         String sql="Create table reserv(id_reserv,id_eventos,id_usuarios,fecha,primary key(id_reserv),foreign key(id_eventos) references eventos,foreign key(id_usuarios) references usuarios)";
-        try (Connection con=DBconexion.conectar();
+        try (Connection con=Conexion.Bases.DatabaseConnection.getConnection();
              PreparedStatement pst=con.prepareStatement(sql)){
             pst.executeUpdate();
         } catch (SQLException e) {
