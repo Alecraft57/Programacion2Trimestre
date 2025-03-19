@@ -12,8 +12,8 @@ public class Reservas {
         Connection con=DBconexion.conectar();
         if(con==null)return;
         String sql="Create table reservas(id_reserva integer, id_usuario integer, id_eventos integer, fecha text,primary key(id_reserva),foreign key(id_usuario) references usuarios(id_usuario),foreign key(id_eventos) references eventos(id_eventos))";
-        try (Statement st=con.createStatement()){
-            st.execute(sql);
+        try (Statement st= con.createStatement()){
+            st.executeUpdate(sql);
             System.out.println("Creada!!!");
         } catch (SQLException e) {
             System.out.println("No se ha podido crear, motivo: "+e.getMessage());
@@ -91,8 +91,8 @@ public class Reservas {
         Connection con=DBconexion.conectar();
         if(con==null)return;
         String sql="Select * from reservas";
-        try (Statement st=con.createStatement()){
-            ResultSet rs=st.executeQuery(sql);
+        try (PreparedStatement st=con.prepareStatement(sql)){
+            ResultSet rs=st.executeQuery();
             System.out.println("id_reserva |\t\t id_usuarios |\t\t id_eventos |\t\t fecha |");
             System.out.println("----------------------------------------------------------------------------------------");
             while (rs.next()){

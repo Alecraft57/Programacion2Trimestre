@@ -37,6 +37,7 @@ public class usuarios {
             System.out.println(ex.getMessage());
         }
     }
+
     public void insertar(int id_usuarios,String nombre,String TF,String tipo_usuario){
         String sql="insert into usuarios (id_usuario,nombre_usuario,TF,tipo_usuario) values (?,?,?,?)";
         Connection con=null;

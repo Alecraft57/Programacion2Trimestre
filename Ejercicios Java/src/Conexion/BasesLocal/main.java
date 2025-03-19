@@ -1,9 +1,10 @@
 package Conexion.BasesLocal;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         Scanner sc = new Scanner(System.in);
         String re = "s";
         while (re.equals("s")) {
@@ -266,6 +267,53 @@ public class main {
                     }
                     break;
                 case 6:
+//                    reserv reserv=new reserv();
+//                    System.out.println("Que quieres hacer?");
+//                    System.out.println("-1: Crear(Ya esta hecha)\n-2: Crear reserv\n-3: eliminar(basandote en un id)\n-4: consulta(basandote en un id)\n-5: actualizar estado\n-6: consulta todas las tablas\n-7: Salir");
+//                    int reserv_funcion=sc.nextInt();
+//                    switch (reserv_funcion){
+//                        case 1:
+//                            reserv.createtable();
+//                            break;
+//                        case 2:
+//                            System.out.println("Dime el id de la reserv");
+//                            int res_id_insertar=sc.nextInt();
+//                            System.out.println("Dime el id del evento");
+//                            int pagado_reserva_insertar=sc.nextInt();
+//                            sc.nextLine();
+//                            System.out.println("Dime el id del evento");
+//                            int pagado_reserva_insertar=sc.nextInt();
+//                            sc.nextLine();
+//                            System.out.println("Dime el estado(Pagado-No Pagado)");
+//                            String pagado_estado_insertar=sc.nextLine();
+//                            break;
+//                        case 3:
+//                            System.out.println("Dime el id del pago que quieres eliminar");
+//                            int pagado_id_eliminar=sc.nextInt();
+//                            break;
+//                        case 4:
+//                            System.out.println("Dime el id del pago para hacer una consulta");
+//                            int pagado_id_consultar=sc.nextInt();
+//                            break;
+//                        case 5:
+//                            System.out.println("Dime el id de el pago para cambiarle el estado");
+//                            int pagado_id_actualizar=sc.nextInt();
+//                            sc.nextLine();
+//                            System.out.println("Dime el nuevo estado del pago");
+//                            String pagado_estado_actualizar=sc.nextLine();
+//                            break;
+//                        case 6:
+//                            System.out.println("Aqui tienes todos los pagos!!");
+//                            break;
+//                        case 7:
+//                            System.out.println("Has salido correctamente");
+//                            re = "n";
+//                            break;
+//                        default:
+//                            System.out.println("Saliendo al menu");
+//                    }
+//                    break;
+                case 7:
                     System.out.println("Has salido correctamente");
                     re = "n";
                     break;
