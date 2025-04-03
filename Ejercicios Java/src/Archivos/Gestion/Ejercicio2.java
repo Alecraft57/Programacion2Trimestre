@@ -20,39 +20,48 @@ public class Ejercicio2 {
 
             if (opcion == -1) {
                 break;
-            }else if(opcion == -2) {
+            } else if (opcion == -2) {
                 System.out.println("Dime el archivo/directorio(el numero)");
-                int res=Integer.parseInt(reader.readLine());
+                int res = Integer.parseInt(reader.readLine());
                 File[] files = directorio.listFiles();
                 File elegido = files[res - 1];
                 System.out.println("Dime que permiso quieres cambiar");
                 String per = reader.readLine();
                 if (per.equals("r")) {
                     elegido.setReadable(false);
-                } else if (!per.equals("r")){
+                } else if (!per.equals("r")) {
                     elegido.setReadable(true);
                 }
                 if (per.equals("w")) {
                     elegido.setReadable(false);
-                } else if (!per.equals("w")){
+                } else if (!per.equals("w")) {
                     elegido.setReadable(true);
                 }
                 if (per.equals("x")) {
                     elegido.setReadable(false);
-                } else if (!per.equals("x")){
+                } else if (!per.equals("x")) {
                     elegido.setReadable(true);
                 }
-            }else if(opcion==-3){
+            } else if (opcion == -3) {
                 File[] files = directorio.listFiles();
                 System.out.println("Dime que extension quieres contar");
-                String res= reader.readLine();
-                int cant_ext=0;
-                for(int i=0;i<files.length;i++){
-                    if(files[i].getName().endsWith(res)){
+                String res = reader.readLine();
+                int cant_ext = 0;
+                for (int i = 0; i < files.length; i++) {
+                    if (files[i].isDirectory()) {
+                        directorio = files[i];
+                        for (int j = 0; j < files.length; j++) {
+                            if (files[j].getName().endsWith(res)) {
+                                cant_ext++;
+                            }
+                        }
+                        directorio = directorio.getParentFile();
+                    } else if (files[i].getName().endsWith(res)) {
                         cant_ext++;
                     }
+
                 }
-                System.out.println("Hay "+cant_ext+ " archivos con esta extension");
+            System.out.println("Hay " + cant_ext + " archivos con esta extension");
 
             }else if(opcion == -4){
                 File[] files = directorio.listFiles();
