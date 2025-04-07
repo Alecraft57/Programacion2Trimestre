@@ -1,0 +1,8 @@
+{ "empleado" :
+  { "num": 1 ,
+    "nombre": "Andreu" ,
+    "departamento": 10 ,
+    "edad": 32 ,
+    "sueldo": 1000.0
+  }
+}
