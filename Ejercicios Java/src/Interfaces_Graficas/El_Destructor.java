@@ -33,6 +33,8 @@ public class El_Destructor {
             ventanassecundarias.setLocationRelativeTo(null);
             JButton Autodes=new JButton("Autodestruccion");
             ventanassecundarias.add(Autodes);
+            Autodes.setBackground(Color.BLACK);
+            Autodes.setForeground(Color.green);
             Autodes.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
