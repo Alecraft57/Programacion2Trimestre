@@ -15,10 +15,14 @@ public class main {
                 case 1:
                     Eventos e = new Eventos();
                     System.out.println("Que quieres hacer?");
-                    System.out.println("-1: insertar\n-2: eliminar(basandote en un id)\n-3: consulta(basandote en un id)\n-4: actualizar\n-5: consulta todas las tablas\n-6: Salir");
+                    System.out.println("-1: Crear(Ya esta hecha)\n-2: insertar\n-3: eliminar(basandote en un id)\n-4: consulta(basandote en un id)\n-5: actualizar\n-6: consulta todas las tablas\n-7: Salir");
                     int eventos_funcion = sc.nextInt();
                     switch (eventos_funcion) {
                         case 1:
+                            System.out.println("Creando tabla...");
+                            e.creartabla();
+                            break;
+                        case 2:
                             System.out.println("Dime el id del evento");
                             int evento_id_insertar = sc.nextInt();
                             sc.nextLine();
@@ -30,27 +34,27 @@ public class main {
                             int evento_hora = sc.nextInt();
                             e.insertar(evento_id_insertar, evento_nombre, evento_fecha, evento_hora);
                             break;
-                        case 2:
+                        case 3:
                             System.out.println("Dime el id del evento que quieras eliminar");
                             int evento_id_eliminar = sc.nextInt();
                             e.eliminar(evento_id_eliminar);
                             break;
-                        case 3:
+                        case 4:
                             System.out.println("Dime el id del evento que quieres mostrar");
                             int evento_id_consultar = sc.nextInt();
                             e.consultar(evento_id_consultar);
                             break;
-                        case 4:
+                        case 5:
                             System.out.println("Dime el id que quieres actualizar");
                             int evento_id_actual_actualizar = sc.nextInt();
                             System.out.println("Dime el nuevo id");
                             int evento_id_nuevo_actualizar = sc.nextInt();
                             e.actualizar(evento_id_actual_actualizar, evento_id_nuevo_actualizar);
                             break;
-                        case 5:
+                        case 6:
                             e.consultar_todo();
                             break;
-                        case 6:
+                        case 7:
                             System.out.println("Has salido correctamente");
                             re = "n";
                             break;
