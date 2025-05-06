@@ -4,6 +4,7 @@ import Interfaces_Graficas.Trabajo_Final.BasesLocal.Eventos;
 import Interfaces_Graficas.Trabajo_Final.BasesLocal.usuarios;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class GUIEventos {
     public void mostrar() {
@@ -30,12 +31,12 @@ public class GUIEventos {
         Label_Hora.setBounds(20, 110, 100, 20);
         JTextField Hora_Eventos = new JTextField();
         Hora_Eventos.setBounds(120, 110, 200, 20);
+        //insertar
+        Button Insertar = new Button("Insertar");
+        Insertar.setBounds(20, 150, 100, 30);
+        Gestion_Eventos.add(Insertar);
 
-        JButton btnInsertar = new JButton("Insertar");
-        btnInsertar.setBounds(20, 150, 100, 30);
-        Gestion_Eventos.add(btnInsertar);
-
-        btnInsertar.addActionListener(e -> {
+        Insertar.addActionListener(e -> {
             try {
                 int id = Integer.parseInt(Id_Eventos.getText());
                 String nombre = Nombre_Eventos.getText();
@@ -48,7 +49,8 @@ public class GUIEventos {
                 JOptionPane.showMessageDialog(Gestion_Eventos, "Error al insertar evento: " + ee.getMessage());
             }
         });
-        JButton boton_consultar = new JButton("Consultar Todo");
+        //consultar
+        Button boton_consultar = new Button("Consultar Todo");
         boton_consultar.setBounds(140, 150, 140, 30);
         Gestion_Eventos.add(boton_consultar);
 
@@ -60,7 +62,20 @@ public class GUIEventos {
                 JOptionPane.showMessageDialog(Gestion_Eventos, "Error: " + ex.getMessage());
             }
         });
+        Button boton_eliminar = new Button("Eliminar");
+        boton_eliminar.setBounds(20, 190, 100, 30);
+        Gestion_Eventos.add(boton_eliminar);
 
+        boton_eliminar.addActionListener(e -> {
+            int id = Integer.parseInt(Id_Eventos.getText());
+            try {
+                Eventos ev = new Eventos();
+                ev.eliminar(id);
+                JOptionPane.showMessageDialog(Gestion_Eventos, "Evento eliminao correctamente.");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(Gestion_Eventos, "Error: " + ex.getMessage());
+            }
+        });
         Gestion_Eventos.add(Label_Id);
         Gestion_Eventos.add(Id_Eventos);
         Gestion_Eventos.add(Label_Nombre);

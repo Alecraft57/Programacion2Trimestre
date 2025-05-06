@@ -1,8 +1,10 @@
 package Interfaces_Graficas.Trabajo_Final.GUI;
 
+import Interfaces_Graficas.Trabajo_Final.BasesLocal.ubicacion;
 import Interfaces_Graficas.Trabajo_Final.BasesLocal.usuarios;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class GUIUsuarios {
     public void mostrar() {
@@ -30,11 +32,11 @@ public class GUIUsuarios {
         JTextField Tipo_Usuarios = new JTextField();
         Tipo_Usuarios.setBounds(140, 110, 180, 20);
 
-        JButton btnInsertar = new JButton("Insertar");
-        btnInsertar.setBounds(20, 150, 100, 30);
-        Gestion_Usuarios.add(btnInsertar);
+        Button Insertar = new Button("Insertar");
+        Insertar.setBounds(20, 150, 100, 30);
+        Gestion_Usuarios.add(Insertar);
 
-        btnInsertar.addActionListener(e -> {
+        Insertar.addActionListener(e -> {
             try {
                 int id = Integer.parseInt(Id_Usuarios.getText());
                 String nombre = Nombre_Usuarios.getText();
@@ -48,7 +50,7 @@ public class GUIUsuarios {
             }
         });
 
-        JButton boton_consultar = new JButton("Consultar Todo");
+        Button boton_consultar = new Button("Consultar Todo");
         boton_consultar.setBounds(140, 150, 140, 30);
         Gestion_Usuarios.add(boton_consultar);
 
@@ -60,7 +62,20 @@ public class GUIUsuarios {
                 JOptionPane.showMessageDialog(Gestion_Usuarios, "Error: " + ex.getMessage());
             }
         });
+        Button boton_eliminar = new Button("Eliminar");
+        boton_eliminar.setBounds(20, 190, 100, 30);
+        Gestion_Usuarios.add(boton_eliminar);
 
+        boton_eliminar.addActionListener(e -> {
+            int id = Integer.parseInt(Id_Usuarios.getText());
+            try {
+                usuarios us = new usuarios();
+                us.eliminar(id);
+                JOptionPane.showMessageDialog(Gestion_Usuarios, "Evento eliminao correctamente.");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(Gestion_Usuarios, "Error: " + ex.getMessage());
+            }
+        });
         Gestion_Usuarios.add(Label_Id);
         Gestion_Usuarios.add(Id_Usuarios);
         Gestion_Usuarios.add(Label_Nombre);

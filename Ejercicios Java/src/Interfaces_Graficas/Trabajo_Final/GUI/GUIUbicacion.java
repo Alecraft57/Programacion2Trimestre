@@ -1,8 +1,10 @@
 package Interfaces_Graficas.Trabajo_Final.GUI;
 
+import Interfaces_Graficas.Trabajo_Final.BasesLocal.Eventos;
 import Interfaces_Graficas.Trabajo_Final.BasesLocal.ubicacion;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class GUIUbicacion {
     public void mostrar() {
@@ -30,11 +32,11 @@ public class GUIUbicacion {
         JTextField Capacidad_Ubicacion = new JTextField();
         Capacidad_Ubicacion.setBounds(140, 110, 200, 20);
 
-        JButton btnInsertar = new JButton("Insertar");
-        btnInsertar.setBounds(20, 150, 100, 30);
-        Gestion_Ubicacion.add(btnInsertar);
+        Button Insertar = new Button("Insertar");
+        Insertar.setBounds(20, 150, 100, 30);
+        Gestion_Ubicacion.add(Insertar);
 
-        btnInsertar.addActionListener(e -> {
+        Insertar.addActionListener(e -> {
             try {
                 int id = Integer.parseInt(Id_Ubicacion.getText());
                 int idEvento = Integer.parseInt(IdEvento_Ubicacion.getText());
@@ -48,7 +50,7 @@ public class GUIUbicacion {
             }
         });
 
-        JButton boton_consultar = new JButton("Consultar Todo");
+        Button boton_consultar = new Button("Consultar Todo");
         boton_consultar.setBounds(140, 150, 140, 30);
         Gestion_Ubicacion.add(boton_consultar);
 
@@ -60,7 +62,20 @@ public class GUIUbicacion {
                 JOptionPane.showMessageDialog(Gestion_Ubicacion, "Error: " + ex.getMessage());
             }
         });
+        Button boton_eliminar = new Button("Eliminar");
+        boton_eliminar.setBounds(20, 190, 100, 30);
+        Gestion_Ubicacion.add(boton_eliminar);
 
+        boton_eliminar.addActionListener(e -> {
+            int id = Integer.parseInt(Id_Ubicacion.getText());
+            try {
+                ubicacion ub = new ubicacion();
+                ub.eliminar(id);
+                JOptionPane.showMessageDialog(Gestion_Ubicacion, "Evento eliminao correctamente.");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(Gestion_Ubicacion, "Error: " + ex.getMessage());
+            }
+        });
         Gestion_Ubicacion.add(Label_Id);
         Gestion_Ubicacion.add(Id_Ubicacion);
         Gestion_Ubicacion.add(Label_IdEvento);
