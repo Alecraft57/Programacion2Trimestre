@@ -65,9 +65,39 @@ public class GUIEventos {
         boton_consultar.addActionListener(e -> {
             try {
                 Eventos ev = new Eventos();
-                ev.consultar_todo();
+                // Modificamos el metodo consultar_todo() para que devuelva un String
+                String resultados = ev.consultar_todo();
+
+                // Creamos una nueva ventana para mostrar los resultados
+                JDialog dialogResultados = new JDialog(Gestion_Eventos, "Listado de Eventos", true);
+                dialogResultados.setSize(700, 500);
+                dialogResultados.setLayout(new BorderLayout());
+
+                // Área de texto con scroll
+                JTextArea areaResultados = new JTextArea(resultados);
+                areaResultados.setEditable(false);
+                areaResultados.setFont(new Font("Monospaced", Font.PLAIN, 12)); // Fuente monoespaciada para alineación
+
+                JScrollPane scroll = new JScrollPane(areaResultados);
+                dialogResultados.add(scroll, BorderLayout.CENTER);
+
+                // Botón para cerrar
+                JButton btnCerrar = new JButton("Cerrar");
+                btnCerrar.addActionListener(evt -> dialogResultados.dispose());
+
+                JPanel panelInferior = new JPanel();
+                panelInferior.add(btnCerrar);
+                dialogResultados.add(panelInferior, BorderLayout.SOUTH);
+
+                // Centramos y mostramos la ventana
+                dialogResultados.setLocationRelativeTo(Gestion_Eventos);
+                dialogResultados.setVisible(true);
+
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(Gestion_Eventos, "Error: " + ex.getMessage());
+                JOptionPane.showMessageDialog(Gestion_Eventos,
+                        "Error al consultar eventos: " + ex.getMessage(),
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
             }
         });
         //Boton de Eliminar con sus Funciones

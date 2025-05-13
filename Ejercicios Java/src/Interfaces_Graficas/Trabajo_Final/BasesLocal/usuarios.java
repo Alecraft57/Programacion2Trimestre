@@ -176,43 +176,84 @@ public class usuarios {
             System.out.println(ex.getMessage());
         }
     }
-    public void consultartodo(){
-        Connection con=null;
-        Statement st=null;
-        String url="jdbc:sqlite:Concierto.db";
-        String sql;
-        ResultSet rs;
-        try {
-            con=DriverManager.getConnection(url);
-            st=con.createStatement();
-            sql="select * from usuarios";
-            rs=st.executeQuery(sql);
-            System.out.println("id_usuario | \t nombre_usuario | \t TF | \ttipo_usuario |");
-            System.out.println("---------------------------------------------------------------------------------");
-            while (rs.next()){
-                System.out.print(rs.getInt(1)+" \t\t | ");
-                System.out.print(rs.getString(2)+" \t\t | ");
-                System.out.print(rs.getString(3)+" \t\t | ");
-                System.out.print(rs.getString(4)+" \t\t | \n");
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+//    public void consultartodo(){
+//        Connection con=null;
+//        Statement st=null;
+//        String url="jdbc:sqlite:Concierto.db";
+//        String sql;
+//        ResultSet rs;
+//        try {
+//            con=DriverManager.getConnection(url);
+//            st=con.createStatement();
+//            sql="select * from usuarios";
+//            rs=st.executeQuery(sql);
+//            System.out.println("id_usuario | \t nombre_usuario | \t TF | \ttipo_usuario |");
+//            System.out.println("---------------------------------------------------------------------------------");
+//            while (rs.next()){
+//                System.out.print(rs.getInt(1)+" \t\t | ");
+//                System.out.print(rs.getString(2)+" \t\t | ");
+//                System.out.print(rs.getString(3)+" \t\t | ");
+//                System.out.print(rs.getString(4)+" \t\t | \n");
+//            }
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//        }
+//        try {
+//            if(con!=null && con.isClosed()){
+//                con.close();
+//                System.out.println("trimestre2.Conexion cerrada");
+//            }
+//        }catch (Exception ex){
+//            System.out.println(ex.getMessage());
+//        }
+//        try {
+//            if(st!=null && st.isClosed()){
+//                st.close();
+//                System.out.println("trimestre2.Conexion cerrada");
+//            }
+//        }catch (Exception ex){
+//            System.out.println(ex.getMessage());
+//        }
+//    }
+public String consultartodo() {
+    Connection con = null;
+    Statement st = null;
+    String url = "jdbc:sqlite:Concierto.db";
+    String sql;
+    ResultSet rs;
+    StringBuilder resultado = new StringBuilder();
+
+    try {
+        con = DriverManager.getConnection(url);
+        st = con.createStatement();
+        sql = "select * from usuarios";
+        rs = st.executeQuery(sql);
+
+        // Encabezados
+        resultado.append("id_usuario | \t nombre_usuario | \t TF | \t tipo_usuario |\n");
+        resultado.append("-----------------------------------------------------------------\n");
+
+        while (rs.next()) {
+            resultado.append(rs.getInt(1)).append(" \t\t | ");
+            resultado.append(rs.getString(2)).append(" \t\t | ");
+            resultado.append(rs.getString(3)).append(" \t\t | ");
+            resultado.append(rs.getString(4)).append(" \t\t | \n");
         }
+    } catch (Exception e) {
+        resultado.append("Error: ").append(e.getMessage());
+    } finally {
         try {
-            if(con!=null && con.isClosed()){
-                con.close();
-                System.out.println("trimestre2.Conexion cerrada");
-            }
-        }catch (Exception ex){
-            System.out.println(ex.getMessage());
-        }
-        try {
-            if(st!=null && st.isClosed()){
+            if (st != null && !st.isClosed()) {
                 st.close();
-                System.out.println("trimestre2.Conexion cerrada");
             }
-        }catch (Exception ex){
-            System.out.println(ex.getMessage());
+            if (con != null && !con.isClosed()) {
+                con.close();
+            }
+        } catch (Exception ex) {
+            resultado.append("\nError al cerrar conexiones: ").append(ex.getMessage());
         }
     }
+
+    return resultado.toString();
+}
 }

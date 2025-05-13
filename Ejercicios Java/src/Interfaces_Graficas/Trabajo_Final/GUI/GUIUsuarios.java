@@ -59,13 +59,47 @@ public class GUIUsuarios {
         Button boton_consultar = new Button("Consultar Todo");
         boton_consultar.setBounds(140, 170, 140, 30);
         Gestion_Usuarios.add(boton_consultar);
-
+//
+//        boton_consultar.addActionListener(e -> {
+//            try {
+//                usuarios us = new usuarios();
+//                us.consultartodo();
+//            } catch (Exception ex) {
+//                JOptionPane.showMessageDialog(Gestion_Usuarios, "Error: " + ex.getMessage());
+//            }
+//        });
+        // Boton de Consultar con sus Funciones - Versión modificada
         boton_consultar.addActionListener(e -> {
             try {
                 usuarios us = new usuarios();
-                us.consultartodo();
+                String resultados = us.consultartodo();
+
+                // Crear una ventana de diálogo para mostrar los resultados
+                JDialog resultadosDialog = new JDialog(Gestion_Usuarios, "Listado de Usuarios", true);
+                resultadosDialog.setSize(700, 500);
+                resultadosDialog.setLayout(new BorderLayout());
+
+                // Área de texto con scroll
+                JTextArea textArea = new JTextArea(resultados);
+                textArea.setEditable(false);
+                textArea.setFont(new Font("Monospaced", Font.PLAIN, 12)); // Fuente monoespaciada para alinear columnas
+                JScrollPane scrollPane = new JScrollPane(textArea);
+
+                // Botón para cerrar
+                JButton cerrarButton = new JButton("Cerrar");
+                cerrarButton.addActionListener(ev -> resultadosDialog.dispose());
+
+                // Añadir componentes al diálogo
+                resultadosDialog.add(scrollPane, BorderLayout.CENTER);
+                resultadosDialog.add(cerrarButton, BorderLayout.SOUTH);
+
+                // Centrar y mostrar
+                resultadosDialog.setLocationRelativeTo(Gestion_Usuarios);
+                resultadosDialog.setVisible(true);
+
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(Gestion_Usuarios, "Error: " + ex.getMessage());
+                JOptionPane.showMessageDialog(Gestion_Usuarios, "Error al consultar usuarios: " + ex.getMessage(),
+                        "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
         //Boton de Eliminar con sus Funciones

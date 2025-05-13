@@ -57,6 +57,7 @@ public class GUIUbicacion {
             }
         });
         //Boton de Consultar con sus Funciones
+        // Botón de Consultar Todo
         Button boton_consultar = new Button("Consultar Todo");
         boton_consultar.setBounds(140, 170, 140, 30);
         Gestion_Ubicacion.add(boton_consultar);
@@ -64,9 +65,35 @@ public class GUIUbicacion {
         boton_consultar.addActionListener(e -> {
             try {
                 ubicacion ub = new ubicacion();
-                ub.consultartodo();
+                String resultados = ub.consultartodo();
+
+                // Crear ventana de resultados
+                JDialog resultadosDialog = new JDialog(Gestion_Ubicacion, "Ubicaciones Disponibles", true);
+                resultadosDialog.setSize(800, 500);
+                resultadosDialog.setLayout(new BorderLayout());
+
+                // Área de texto con fuente monoespaciada para alineación correcta
+                JTextArea textArea = new JTextArea(resultados);
+                textArea.setEditable(false);
+                textArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
+                JScrollPane scrollPane = new JScrollPane(textArea);
+
+                // Botón para cerrar
+                JButton cerrarButton = new JButton("Cerrar");
+                cerrarButton.addActionListener(ev -> resultadosDialog.dispose());
+
+                // Añadir componentes
+                resultadosDialog.add(scrollPane, BorderLayout.CENTER);
+                resultadosDialog.add(cerrarButton, BorderLayout.SOUTH);
+
+                // Mostrar centrado
+                resultadosDialog.setLocationRelativeTo(Gestion_Ubicacion);
+                resultadosDialog.setVisible(true);
+
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(Gestion_Ubicacion, "Error: " + ex.getMessage());
+                JOptionPane.showMessageDialog(Gestion_Ubicacion,
+                        "Error al consultar ubicaciones: " + ex.getMessage(),
+                        "Error", JOptionPane.ERROR_MESSAGE);
             }
         });
         //Boton de Eliminar con sus Funciones
