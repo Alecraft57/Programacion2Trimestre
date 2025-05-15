@@ -6,7 +6,7 @@ public class Eventos {
     private int eventos;
     private String nombre_evento;
     private int fecha;
-    private int hora;
+    private String hora;
     public void creartabla(){
         Connection con=null;
         Statement st=null;
@@ -15,7 +15,7 @@ public class Eventos {
         try {
             con= DriverManager.getConnection(url);
             st=con.createStatement();
-            sql="Create table eventos (id_eventos integer, nombre_evento text, fecha text, hora integer,primary key (id_eventos))";
+            sql="Create table eventos (id_eventos integer, nombre_evento text, fecha text, hora text,primary key (id_eventos))";
             st.executeUpdate(sql);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -36,7 +36,7 @@ public class Eventos {
             System.out.println(ex.getMessage());
         }
     }
-    public void insertar(int id_eventos,String nombre_evento,String fecha, int hora){
+    public void insertar(int id_eventos,String nombre_evento,String fecha, String hora){
         String url="jdbc:sqlite:Concierto.db";
         Connection con=null;
         PreparedStatement st=null;
@@ -49,7 +49,7 @@ public class Eventos {
             st.setInt(1,id_eventos);
             st.setString(2,nombre_evento);
             st.setString(3,fecha);
-            st.setInt(4,hora);
+            st.setString(4,hora);
             st.executeUpdate();
         }catch (Exception e) {
             System.out.println(e.getMessage());
@@ -117,7 +117,7 @@ public class Eventos {
                 System.out.print(rs.getInt(1)+"\t\t | ");
                 System.out.print(rs.getString(2)+" \t\t | ");
                 System.out.print(rs.getString(3)+" \t\t | ");
-                System.out.print(rs.getInt(4)+" \t\t");
+                System.out.print(rs.getString(4)+" \t\t");
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -225,7 +225,7 @@ public String consultar_todo() {
             resultado.append(rs.getInt(1)).append("\t\t | ");
             resultado.append(rs.getString(2)).append(" \t\t | ");
             resultado.append(rs.getString(3)).append(" \t\t | ");
-            resultado.append(rs.getInt(4)).append(" \t\t\n\n");
+            resultado.append(rs.getString(4)).append(" \t\t\n\n");
         }
     } catch (Exception e) {
         resultado.append("Error: ").append(e.getMessage());

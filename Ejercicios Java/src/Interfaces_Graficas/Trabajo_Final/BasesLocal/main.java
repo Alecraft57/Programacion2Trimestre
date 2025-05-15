@@ -31,7 +31,7 @@ public class main {
                             System.out.println("Dime la fecha(en formato (DD/MM/YYYY))");
                             String evento_fecha = sc.nextLine();
                             System.out.println("Dime la hora(solo la hora)");
-                            int evento_hora = sc.nextInt();
+                            String evento_hora = sc.nextLine();
                             e.insertar(evento_id_insertar, evento_nombre, evento_fecha, evento_hora);
                             break;
                         case 3:

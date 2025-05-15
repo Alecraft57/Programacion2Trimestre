@@ -30,7 +30,7 @@ public class GUIEventos {
         JTextField Fecha_Eventos = new JTextField();
         Fecha_Eventos.setBounds(170, 80, 150, 20);
         //Hora
-        JLabel Label_Hora = new JLabel("Hora:");
+        JLabel Label_Hora = new JLabel("Hora (00:00):");
         Label_Hora.setBounds(20, 110, 100, 20);
         JTextField Hora_Eventos = new JTextField();
         Hora_Eventos.setBounds(120, 110, 200, 20);
@@ -49,7 +49,7 @@ public class GUIEventos {
                 int id = Integer.parseInt(Id_Eventos.getText());
                 String nombre = Nombre_Eventos.getText();
                 String fecha = Fecha_Eventos.getText();
-                int hora = Integer.parseInt(Hora_Eventos.getText());
+                String hora =Hora_Eventos.getText();
                 Eventos evento = new Eventos();
                 evento.insertar(id, nombre, fecha, hora);
                 JOptionPane.showMessageDialog(Gestion_Eventos, "Evento insertado correctamente.");
